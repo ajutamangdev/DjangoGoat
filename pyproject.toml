@@ -1,0 +1,45 @@
+[project]
+name = "django_goat"
+version = "0.1.0"
+description = "An intentionally vulnerable Django web application designed for learning, testing, and demonstrating common security flaws in a safe environment. Ideal for security training, developers and hands-on practice."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "asgiref==3.9.1",
+    "asttokens==3.0.0",
+    "bleach==6.2.0",
+    "certifi==2025.7.14",
+    "charset-normalizer==3.4.2",
+    "decorator==5.2.1",
+    "django==5.2.4",
+    "django-cors-headers==4.7.0",
+    "django-debug-toolbar==5.2.0",
+    "executing==2.2.0",
+    "idna==3.10",
+    "ipython==9.4.0",
+    "ipython-pygments-lexers==1.1.1",
+    "jedi==0.19.2",
+    "jinja2==3.1.6",
+    "lxml==6.0.0",
+    "markdown==3.8.2",
+    "markupsafe==3.0.2",
+    "matplotlib-inline==0.1.7",
+    "parso==0.8.4",
+    "passlib==1.7.4",
+    "pexpect==4.9.0",
+    "pillow==11.3.0",
+    "prompt-toolkit==3.0.51",
+    "ptyprocess==0.7.0",
+    "pure-eval==0.2.3",
+    "pygments==2.19.2",
+    "pyjwt==2.10.1",
+    "pyyaml==6.0.2",
+    "python-dotenv==1.1.1",
+    "requests==2.32.4",
+    "sqlparse==0.5.3",
+    "stack-data==0.6.3",
+    "traitlets==5.14.3",
+    "urllib3==2.5.0",
+    "wcwidth==0.2.13",
+    "webencodings==0.5.1"
+]
