@@ -1,0 +1,36 @@
+name: DjangoGoat CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.12"
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install uv
+        uv sync
+
+    - name: Lint with ruff
+      run: |
+        uv run ruff check
+
+    - name: Run tests
+      run: |
+        uv run python3 manage.py test
+    
