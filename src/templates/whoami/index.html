@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-slate-900">
+    <!-- Fixed Header - Simplified -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center">
+                <div class="p-2 bg-red-600 rounded-lg">
+                    <i data-lucide="shield" class="h-6 w-6 text-white"></i>
+                </div>
+                <div class="ml-3">
+                    <h1 class="text-xl font-bold text-white">Django Goat</h1>
+                    <p class="text-slate-300 text-xs">Vulnerable Django Application</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full-height Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <div
+                class="inline-flex items-center space-x-2 bg-red-600/10 border border-red-600/20 rounded-full px-4 py-2 mb-8">
+                <i data-lucide="bug" class="h-4 w-4 text-red-400"></i>
+                <span class="text-red-400 text-sm font-medium">Security Learning Platform</span>
+            </div>
+
+            <h2 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                Master Django
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-500"> Security</span>
+            </h2>
+
+            <p class="text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                A comprehensive vulnerable Django application designed to teach security professionals and developers
+                about web application vulnerabilities and secure coding practices.
+            </p>
+
+            <!-- Scroll Down Indicator -->
+            <a href="#choose-path"
+                class="inline-flex flex-col items-center text-slate-400 hover:text-white transition-colors">
+                <span class="text-sm mb-2">Explore Paths</span>
+                <i data-lucide="chevrons-down" class="h-6 w-6"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Options -->
+    <section id="choose-path" class="relative px-6 py-24 scroll-mt-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-white mb-4">Choose Your Path</h3>
+                <p class="text-slate-300 text-xl max-w-2xl mx-auto">Select your role to access tailored content and
+                    resources</p>
+            </div>
+
+            <!-- Path Cards - Simplified for better visibility -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Pentester Path -->
+                <div
+                    class="hover-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-6 transition-all duration-300 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/20 card-hover transform hover:-translate-y-1">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div
+                                class="p-3 bg-red-600 rounded-xl group-hover:bg-red-500 transition-colors duration-300">
+                                <i data-lucide="target" class="h-7 w-7 text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-white">Pentester</h4>
+                                <p class="text-slate-400">Python & Django Labs</p>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 mb-4 leading-relaxed">
+                            Access hands-on Python and Django-specific penetration testing labs with real-world
+                            exploitable vulnerabilities.
+                            Practice finding and exploiting security flaws in Django applications.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="code" class="h-4 w-4 text-red-400"></i>
+                                <span class="text-slate-300 text-sm">Django Exploits</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="database" class="h-4 w-4 text-red-400"></i>
+                                <span class="text-slate-300 text-sm">SQL Injection</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="key" class="h-4 w-4 text-red-400"></i>
+                                <span class="text-slate-300 text-sm">Authentication Bypass</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="file-code" class="h-4 w-4 text-red-400"></i>
+                                <span class="text-slate-300 text-sm">Template Injection</span>
+                            </div>
+                        </div>
+
+                        <a href="/labs"
+                            class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg hover:glow-red">
+                            <span>Access Labs</span>
+                            <i data-lucide="chevron-right"
+                                class="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Developer Path -->
+                <div
+                    class="hover-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-6 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 card-hover transform hover:-translate-y-1">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div
+                                class="p-3 bg-blue-600 rounded-xl group-hover:bg-blue-500 transition-colors duration-300">
+                                <i data-lucide="code" class="h-7 w-7 text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-white">Developer</h4>
+                                <p class="text-slate-400">Django Security Guides</p>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 mb-4 leading-relaxed">
+                            Learn Django-specific security best practices and coding guidelines to build robust,
+                            secure web applications. Understand how to implement proper security controls in your Django
+                            projects.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="shield-check" class="h-4 w-4 text-blue-400"></i>
+                                <span class="text-slate-300 text-sm">Django Security Checklist</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="user-check" class="h-4 w-4 text-blue-400"></i>
+                                <span class="text-slate-300 text-sm">Authentication Security</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="filter" class="h-4 w-4 text-blue-400"></i>
+                                <span class="text-slate-300 text-sm">Input Validation</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="settings" class="h-4 w-4 text-blue-400"></i>
+                                <span class="text-slate-300 text-sm">Secure Configuration</span>
+                            </div>
+                        </div>
+
+                        <a href="/guides"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg hover:glow-blue">
+                            <span>Learn Security</span>
+                            <i data-lucide="chevron-right"
+                                class="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+</div>
+{% endblock %}

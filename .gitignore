@@ -13,3 +13,6 @@ media
 
 # Visual Studio Code # 
 .vscode/*
+
+node_modules/
+.django_tailwind_cli/
