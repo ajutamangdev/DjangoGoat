@@ -1,0 +1,96 @@
+{% extends 'labs/xss/xss_lab_base.html' %}
+
+{% block title %}Basic Reflected XSS - Django Goat{% endblock %}
+
+{% block lab_content %}
+<div
+    class="bg-gradient-to-br from-slate-800 to-slate-800/80 rounded-2xl p-8 border border-slate-700/50 shadow-2xl mb-8 card-hover">
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center space-x-3">
+            <h2 class="text-2xl font-bold text-white">Form</h2>
+        </div>
+    </div>
+
+    <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50 mb-6">
+        <form method="GET" action="" class="space-y-4">
+            <div>
+                <label for="name" class="block text-slate-300 mb-3 font-medium">
+                    <i data-lucide="user" class="h-4 w-4 inline mr-2"></i>
+                    Enter your name:
+                </label>
+                <div class="relative">
+                    <input type="text" id="name" name="name" value="{{ request.GET.name|default:'' }}"
+                        class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
+                        placeholder="Try entering: &lt;script&gt;alert('XSS')&lt;/script&gt;">
+                    <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <i data-lucide="arrow-right" class="h-4 w-4 text-slate-500"></i>
+                    </div>
+                </div>
+            </div>
+            <button type="submit"
+                class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+                <i data-lucide="send" class="h-4 w-4 mr-2 inline"></i>
+                Submit & Test Vulnerability
+            </button>
+        </form>
+    </div>
+
+    {% if user_name %}
+    <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl p-6 border border-slate-700/50 shadow-inner">
+        <div class="flex items-center space-x-3 mb-4">
+            <div class="p-2 bg-green-500/20 rounded-lg">
+                <i data-lucide="message-circle" class="h-5 w-5 text-green-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-white">Application Response</h3>
+            <div class="flex-1 border-t border-slate-700"></div>
+            <span class="text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">LIVE OUTPUT</span>
+        </div>
+        <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/30">
+            <!-- Vulnerable code: Directly inserting user input without sanitization -->
+            <p class="text-slate-300 text-lg">Hello, {{ user_name|safe }}!</p>
+        </div>
+
+        <div class="mt-4 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-lg">
+            <div class="flex items-center space-x-2 mb-2">
+                <i data-lucide="zap" class="h-5 w-5 text-blue-400"></i>
+                <span class="text-blue-400 font-semibold">Execution-Based Verification</span>
+            </div>
+            <p class="text-blue-300 text-sm mb-2">Success is only achieved when JavaScript actually executes and
+                produces a visible result:</p>
+            <ul class="text-blue-300 text-sm space-y-1 ml-4">
+                <li>• Alert popup appears</li>
+                <li>• Confirm dialog shows</li>
+                <li>• Prompt dialog appears</li>
+                <li>• Console output is generated</li>
+                <li>• DOM manipulation occurs</li>
+            </ul>
+            <div class="mt-3 p-2 bg-slate-900/50 rounded border border-blue-500/30">
+                <p class="text-xs text-slate-400">💡 Simply injecting code patterns is not enough - the JavaScript must
+                    actually run!</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block lab_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Visual feedback for input field
+        const nameInput = document.getElementById('name');
+        if (nameInput) {
+            nameInput.addEventListener('input', function () {
+                // Just provide visual feedback, no pattern detection
+                if (this.value.trim()) {
+                    this.style.borderColor = '#3b82f6';
+                    this.style.boxShadow = '0 0 0 2px rgba(59, 130, 246, 0.2)';
+                } else {
+                    this.style.borderColor = '#475569';
+                    this.style.boxShadow = '';
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+<!-- Lab Header -->
+<header class="relative z-10 px-6 py-8 border-b border-slate-700/50 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                        {{ lab_title|default:"XSS Lab" }}
+                    </h1>
+                    <div class="flex items-center space-x-3 mt-1">
+                        <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
+                            {{ difficulty|default:"MEDIUM" }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="{% url 'xss:dashboard' %}"
+                    class="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all hover:scale-105 group"
+                    title="Back to XSS Dashboard">
+                    <i data-lucide="home" class="h-5 w-5 group-hover:scale-110 transition-transform"></i>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <button id="hintToggle"
+                        class="px-4 py-2 bg-yellow-600/20 hover:bg-yellow-600/30 text-yellow-400 rounded-lg border border-yellow-600/30 transition-all hover:scale-105 group">
+                        <i data-lucide="lightbulb" class="h-4 w-4 mr-2 inline group-hover:animate-pulse"></i>
+                        <span class="font-medium">Show Hints</span>
+                    </button>
+                    {% if next_lab_url %}
+                    <a href="{{ next_lab_url }}"
+                        class="flex items-center space-x-2 px-3 py-2 text-slate-400 hover:text-blue-400 hover:bg-slate-800/50 rounded-lg transition-all hover:scale-105 group"
+                        title="Next Lab">
+                        <span class="text-sm font-medium">Next Lab</span>
+                        <i data-lucide="arrow-right" class="h-4 w-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

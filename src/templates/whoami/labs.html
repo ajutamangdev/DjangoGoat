@@ -3,77 +3,137 @@
 {% block title %} Labs - Django Goat{% endblock %}
 
 {% block content %}
-<div class="min-h-screen">
-    <header class="relative z-10 px-6 py-8 border-b border-slate-700">
+<div class="min-h-screen bg-slate-900">
+    <!-- Lab Header -->
+    <header class="relative z-10 px-6 py-8 border-b border-slate-700/50 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="p-2 bg-red-600 rounded-lg">
-                        <i data-lucide="target" class="h-8 w-8 text-white"></i>
+                <div class="flex items-center space-x-4">
+                    <div class="p-2 bg-red-600/20 rounded-lg border border-red-500/30">
+                        <i data-lucide="target" class="h-8 w-8 text-red-400"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold text-white">Labs</h1>
-                        <p class="text-slate-300 text-sm">Security Testing Environment</p>
+                        <h1
+                            class="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                            Security Labs
+                        </h1>
+                        <p class="text-slate-300 text-sm">Penetration Testing Environment</p>
                     </div>
                 </div>
-                <a href="{% url 'index' %}" class="text-slate-300 hover:text-white transition-colors">
-                    <i data-lucide="arrow-left" class="h-6 w-6"></i>
+                <a href="{% url 'index' %}"
+                    class="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all hover:scale-105 group"
+                    title="Back to Home">
+                    <i data-lucide="arrow-left" class="h-6 w-6 group-hover:scale-110 transition-transform"></i>
                 </a>
             </div>
         </div>
     </header>
+
+    <!-- Labs Description -->
+    <section class="px-6 py-6 border-b border-slate-800/50">
+        <div class="max-w-7xl mx-auto">
+            <div
+                class="bg-gradient-to-br from-slate-800 to-slate-800/80 rounded-xl p-6 border border-slate-700/50 shadow-xl backdrop-blur-sm">
+                <div class="flex items-start space-x-3">
+                    <div class="p-2 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                        <i data-lucide="info" class="h-5 w-5 text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-white mb-2">Welcome to Django Goat Labs</h2>
+                        <p class="text-slate-300 leading-relaxed text-sm">
+                            Practice your penetration testing skills with these intentionally vulnerable web
+                            applications.
+                            Each lab focuses on different security vulnerabilities and attack vectors commonly found in
+                            web applications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Labs Grid -->
     <section class="px-6 py-12">
         <div class="max-w-7xl mx-auto">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-white mb-4">Available Labs</h2>
-                <p class="text-slate-300">Practice your penetration testing skills with these vulnerable applications</p>
+                <p class="text-slate-300">Choose a lab to start practicing your security testing skills</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- XSS Lab -->
-                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 hover:border-orange-500/50 transition-all duration-300">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="p-2 bg-orange-600/20 rounded-lg">
-                            <i data-lucide="code" class="h-6 w-6 text-orange-400"></i>
+                <div
+                    class="bg-gradient-to-br from-slate-800 to-slate-800/80 rounded-2xl p-8 border border-slate-700/50 shadow-2xl hover:border-orange-500/50 transition-all duration-300 card-hover">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-orange-600/20 rounded-lg border border-orange-500/30">
+                            <i data-lucide="code" class="h-8 w-8 text-orange-400"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white">Cross-Site Scripting</h3>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Cross-Site Scripting</h3>
+                        </div>
                     </div>
-                    <p class="text-slate-300 mb-4">Practice identifying and exploiting XSS vulnerabilities in various contexts.</p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Master XSS vulnerabilities through hands-on practice with reflected, stored, DOM-based, and
+                        advanced XSS techniques.
+                    </p>
                     <div class="flex items-center justify-between">
-                        <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
-                            Start Lab
-                        </button>
+                        <a href="{% url 'xss:dashboard' %}"
+                            class="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+                            <i data-lucide="play" class="h-4 w-4 mr-2 inline"></i>
+                            Start XSS Labs
+                        </a>
                     </div>
                 </div>
 
                 <!-- SQL Injection Lab (Coming Soon) -->
-                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 hover:border-red-500/50 transition-all duration-300 opacity-70">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="p-2 bg-red-600/20 rounded-lg">
-                            <i data-lucide="database" class="h-6 w-6 text-red-400"></i>
+                <div
+                    class="bg-gradient-to-br from-slate-800 to-slate-800/80 rounded-2xl p-8 border border-slate-700/50 shadow-2xl hover:border-red-500/50 transition-all duration-300 opacity-70">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-red-600/20 rounded-lg border border-red-500/30">
+                            <i data-lucide="database" class="h-8 w-8 text-red-400"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white">SQL Injection</h3>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">SQL Injection</h3>
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 mt-1">
+                                🚧 Coming Soon
+                            </span>
+                        </div>
                     </div>
-                    <p class="text-slate-300 mb-4">Learn to identify and exploit SQL injection vulnerabilities in web applications.</p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Learn to identify and exploit SQL injection vulnerabilities in database-driven web applications.
+                    </p>
                     <div class="flex items-center justify-between">
-                        <span class="bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-semibold cursor-not-allowed opacity-80">
+                        <span class="bg-red-700/50 text-red-200 px-6 py-3 rounded-xl font-semibold cursor-not-allowed">
+                            <i data-lucide="clock" class="h-4 w-4 mr-2 inline"></i>
                             Coming Soon
                         </span>
+
                     </div>
                 </div>
-                
+
                 <!-- CSRF Lab (Coming Soon) -->
-                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 hover:border-yellow-500/50 transition-all duration-300 opacity-70">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="p-2 bg-yellow-600/20 rounded-lg">
-                            <i data-lucide="shield-off" class="h-6 w-6 text-yellow-400"></i>
+                <div
+                    class="bg-gradient-to-br from-slate-800 to-slate-800/80 rounded-2xl p-8 border border-slate-700/50 shadow-2xl hover:border-yellow-500/50 transition-all duration-300 opacity-70">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-3 bg-yellow-600/20 rounded-lg border border-yellow-500/30">
+                            <i data-lucide="shield-off" class="h-8 w-8 text-yellow-400"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white">CSRF</h3>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">CSRF</h3>
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 mt-1">
+                                🚧 Coming Soon
+                            </span>
+                        </div>
                     </div>
-                    <p class="text-slate-300 mb-4">Understand and exploit Cross-Site Request Forgery vulnerabilities.</p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Understand and exploit Cross-Site Request Forgery vulnerabilities in web applications.
+                    </p>
                     <div class="flex items-center justify-between">
-                        <span class="bg-yellow-700 text-white px-4 py-2 rounded-lg text-sm font-semibold cursor-not-allowed opacity-80">
+                        <span
+                            class="bg-yellow-700/50 text-yellow-200 px-6 py-3 rounded-xl font-semibold cursor-not-allowed">
+                            <i data-lucide="clock" class="h-4 w-4 mr-2 inline"></i>
                             Coming Soon
                         </span>
                     </div>

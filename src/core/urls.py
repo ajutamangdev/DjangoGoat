@@ -21,4 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("whoami.urls")),
+    path("labs/xss/", include("labs.xss.urls")),
 ]

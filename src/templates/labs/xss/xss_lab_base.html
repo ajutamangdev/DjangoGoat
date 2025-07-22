@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ lab_title|default:"XSS Lab" }} - Django Goat{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-slate-900">
+    {% include 'labs/xss/includes/lab_header.html' %}
+    {% include 'labs/xss/includes/lab_description.html' %}
+
+    <!-- Lab Content -->
+    <section class="px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            {% block lab_content %}
+            <!-- Lab-specific content goes here -->
+            {% endblock %}
+
+            {% include 'labs/xss/includes/hints_section.html' %}
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/xss_common.js' %}"></script>
+{% block lab_js %}
+
+<!-- Lab-specific JavaScript goes here -->
+{% endblock %}
+{% endblock %}
