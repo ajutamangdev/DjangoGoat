@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: infra/container/dev.Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+      - ./staticfiles:/app/staticfiles
+      - ./db.sqlite3:/app/db.sqlite3
+    environment:
+      DJANGO_SETTINGS_MODULE: core.settings
+      DEBUG: 1
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  # Optional: Security warning service
+  warning:
+    image: alpine:latest
+    command: >
+      sh -c "
+        echo '⚠️  SECURITY WARNING ⚠️';
+        echo 'This application contains intentional vulnerabilities for education only.';
+        sleep infinity
+      "
+    depends_on:
+      - web
+
+networks:
+  default:
+    name: django_goat_network
