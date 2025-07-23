@@ -44,4 +44,5 @@ dependencies = [
     "webencodings==0.5.1",
     "django-tailwind-cli>=4.3.0",
     "ruff>=0.12.4",
+    "gunicorn>=23.0.0",
 ]
