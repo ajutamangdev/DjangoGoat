@@ -1,37 +1,489 @@
 {% extends 'base.html' %}
 
-{% block title %}Developer Security Practices - Django Goat{% endblock %}
+{% block title %}Django Security Guide - Django Goat{% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex flex-col items-center justify-center">
+<div class="min-h-screen bg-slate-900">
     <!-- Header -->
-    <header class="w-full px-6 py-8 border-b border-slate-700 mb-8">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="p-2 bg-blue-600 rounded-lg">
-                    <i data-lucide="code" class="h-8 w-8 text-white"></i>
+    <header class="relative z-10 px-6 py-8 border-b border-slate-700/50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="p-2 bg-blue-600/20 rounded-lg border border-blue-500/30">
+                        <i data-lucide="shield-check" class="h-8 w-8 text-blue-400"></i>
+                    </div>
+                    <div>
+                        <h1
+                            class="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+                            Django Security Guide
+                        </h1>
+                        <p class="text-slate-300 text-sm">Comprehensive Security Reference</p>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-2xl font-bold text-white">Developer Security</h1>
-                    <p class="text-slate-300 text-sm">Secure Django Development Practices</p>
-                </div>
+                <a href="{% url 'index' %}"
+                    class="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all hover:scale-105 group"
+                    title="Back to Home">
+                    <i data-lucide="arrow-left" class="h-6 w-6 group-hover:scale-110 transition-transform"></i>
+                </a>
             </div>
-            <a href="{% url 'index' %}" class="text-slate-300 hover:text-white transition-colors">
-                <i data-lucide="arrow-left" class="h-6 w-6"></i>
-            </a>
         </div>
     </header>
 
-    <!-- Coming Soon Message -->
-    <div class="flex flex-col items-center justify-center flex-1 text-center">
-        <div class="p-6 bg-slate-800 rounded-xl border border-blue-700 shadow-lg">
-            <i data-lucide="clock" class="h-12 w-12 text-blue-400 mb-4 animate-pulse"></i>
-            <h2 class="text-3xl font-bold text-white mb-2">Coming Soon!</h2>
-            <p class="text-lg text-slate-300 mb-2">
-                Guides and tips for secure Django development are on their way.<br>
-                Stay tuned for best practices, code examples, and more!
-            </p>
+    <!-- Guide Description -->
+    <section class="px-6 py-6 border-b border-slate-800/50">
+        <div class="max-w-7xl mx-auto">
+            <div
+                class="bg-gradient-to-br from-slate-800 to-slate-800/80 rounded-xl p-6 border border-slate-700/50 shadow-xl backdrop-blur-sm">
+                <div class="flex items-start space-x-3">
+                    <div class="p-2 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                        <i data-lucide="bookmark" class="h-5 w-5 text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-white mb-2">Welcome to Django Security Guide</h2>
+                        <p class="text-slate-300 leading-relaxed text-sm">
+                            Essential security practices and settings for Django applications. Use this comprehensive
+                            guide to quickly implement security measures and prevent common vulnerabilities.
+                        </p>
+                        <div class="flex items-center space-x-4 text-xs text-slate-400 mt-3">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="check-circle" class="h-3 w-3 text-green-400"></i>
+                                <span>Production Ready</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="zap" class="h-3 w-3 text-yellow-400"></i>
+                                <span>Quick Reference</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="shield" class="h-3 w-3 text-blue-400"></i>
+                                <span>Security Focused</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-{% endblock %}
+    </section>
+
+    <!-- Main Content -->
+    <section class="px-6 py-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-white mb-4">Security Reference Guide</h2>
+                <p class="text-slate-300">Essential security practices organized by vulnerability type and
+                    implementation area</p>
+            </div>
+
+            <!-- Core Security Areas -->
+            <div class="mb-16">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- XSS Prevention -->
+                    <div
+                        class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:border-red-500/50 hover:bg-slate-800/70 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/10">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="p-3 bg-red-500/20 rounded-xl border border-red-500/30 group-hover:bg-red-500/30 transition-colors">
+                                <i data-lucide="alert-triangle" class="h-7 w-7 text-red-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">XSS Prevention</h3>
+                                <p class="text-red-400 text-sm">Cross-Site Scripting</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Never use <code
+                                        class="bg-slate-900/50 px-2 py-1 rounded text-xs text-red-300">|safe</code> with
+                                    user input</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use Django forms for input validation</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Implement Content Security Policy (CSP)</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use <code
+                                        class="bg-slate-900/50 px-2 py-1 rounded text-xs text-green-300">|escape</code>
+                                    for
+                                    explicit escaping</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Validate and sanitize all user inputs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Upload Security -->
+                    <div
+                        class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:border-orange-500/50 hover:bg-slate-800/70 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="p-3 bg-orange-500/20 rounded-xl border border-orange-500/30 group-hover:bg-orange-500/30 transition-colors">
+                                <i data-lucide="upload" class="h-7 w-7 text-orange-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">File Upload Security</h3>
+                                <p class="text-orange-400 text-sm">Secure File Handling</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Validate file extensions AND content (magic bytes)
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Store files outside web root</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Generate random filenames (UUID)</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Set file size limits</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Scan uploaded files for malware</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Authentication & Authorization -->
+                    <div
+                        class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:border-green-500/50 hover:bg-slate-800/70 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/10">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="p-3 bg-green-500/20 rounded-xl border border-green-500/30 group-hover:bg-green-500/30 transition-colors">
+                                <i data-lucide="lock" class="h-7 w-7 text-green-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Authentication</h3>
+                                <p class="text-green-400 text-sm">User Access Control</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use Django's built-in authentication</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use <code
+                                        class="bg-slate-900/50 px-2 py-1 rounded text-xs text-green-300">@login_required</code>
+                                    decorator</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Configure strong password validators</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Implement rate limiting for login attempts</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use two-factor authentication (2FA)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Security -->
+                    <div
+                        class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:border-purple-500/50 hover:bg-slate-800/70 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="p-3 bg-purple-500/20 rounded-xl border border-purple-500/30 group-hover:bg-purple-500/30 transition-colors">
+                                <i data-lucide="database" class="h-7 w-7 text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Database Security</h3>
+                                <p class="text-purple-400 text-sm">Data Protection</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Always use Django ORM (prevents SQL injection)</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use parameterized queries for raw SQL</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Apply least-privilege database permissions</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Encrypt sensitive database fields</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Regular database backups</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HTTPS & Transport Security -->
+                    <div
+                        class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-800/70 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="p-3 bg-blue-500/20 rounded-xl border border-blue-500/30 group-hover:bg-blue-500/30 transition-colors">
+                                <i data-lucide="shield" class="h-7 w-7 text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">HTTPS & Transport</h3>
+                                <p class="text-blue-400 text-sm">Secure Communication</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Force HTTPS in production</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Enable HSTS headers</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use secure cookie flags</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Implement certificate pinning</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use TLS 1.2+ only</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Session & Cookie Security -->
+                    <div
+                        class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 hover:border-yellow-500/50 hover:bg-slate-800/70 transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/10">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="p-3 bg-yellow-500/20 rounded-xl border border-yellow-500/30 group-hover:bg-yellow-500/30 transition-colors">
+                                <i data-lucide="cookie" class="h-7 w-7 text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Sessions & Cookies</h3>
+                                <p class="text-yellow-400 text-sm">Session Management</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Set <code
+                                        class="bg-slate-900/50 px-2 py-1 rounded text-xs text-yellow-300">SESSION_COOKIE_SECURE = True</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Set <code
+                                        class="bg-slate-900/50 px-2 py-1 rounded text-xs text-yellow-300">SESSION_COOKIE_HTTPONLY = True</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Configure session timeout</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Use SameSite cookie attribute</div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="text-slate-300 text-sm">Regenerate session ID on login</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essential Settings Section -->
+            <div class="mb-16">
+                <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-xl">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="p-3 bg-blue-500/20 rounded-xl border border-blue-500/30">
+                            <i data-lucide="settings" class="h-8 w-8 text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-white">Essential Django Settings</h3>
+                            <p class="text-slate-400 mt-1">Critical configuration settings for production security</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50">
+                            <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                <span class="text-2xl mr-2">🔒</span>
+                                Production Security
+                            </h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-blue-500 focus:ring-blue-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-blue-300 group-hover:bg-slate-700 transition-colors">DEBUG = False</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-blue-500 focus:ring-blue-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-blue-300 group-hover:bg-slate-700 transition-colors">ALLOWED_HOSTS = ['domain.com']</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-blue-500 focus:ring-blue-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-blue-300 group-hover:bg-slate-700 transition-colors">SECURE_SSL_REDIRECT = True</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-blue-500 focus:ring-blue-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-blue-300 group-hover:bg-slate-700 transition-colors">SECURE_HSTS_SECONDS = 31536000</code>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50">
+                            <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                <span class="text-2xl mr-2">🍪</span>
+                                Cookie Security
+                            </h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-yellow-500 focus:ring-yellow-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-yellow-300 group-hover:bg-slate-700 transition-colors">SESSION_COOKIE_SECURE = True</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-yellow-500 focus:ring-yellow-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-yellow-300 group-hover:bg-slate-700 transition-colors">SESSION_COOKIE_HTTPONLY = True</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-yellow-500 focus:ring-yellow-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-yellow-300 group-hover:bg-slate-700 transition-colors">CSRF_COOKIE_SECURE = True</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-yellow-500 focus:ring-yellow-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-yellow-300 group-hover:bg-slate-700 transition-colors">CSRF_COOKIE_HTTPONLY = True</code>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50">
+                            <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                                <span class="text-2xl mr-2">🛡️</span>
+                                Security Headers
+                            </h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-green-500 focus:ring-green-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-green-300 group-hover:bg-slate-700 transition-colors">X_FRAME_OPTIONS = 'DENY'</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-green-500 focus:ring-green-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-green-300 group-hover:bg-slate-700 transition-colors">SECURE_CONTENT_TYPE_NOSNIFF = True</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-green-500 focus:ring-green-500 focus:ring-offset-slate-800">
+                                    <code
+                                        class="bg-slate-800 px-2 py-1 rounded text-xs text-green-300 group-hover:bg-slate-700 transition-colors">SECURE_BROWSER_XSS_FILTER = True</code>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="rounded bg-slate-700 border-slate-600 text-green-500 focus:ring-green-500 focus:ring-offset-slate-800">
+                                    <span
+                                        class="text-sm text-green-300 group-hover:text-green-200 transition-colors">Content
+                                        Security Policy (CSP)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deployment Check Section -->
+                    <div class="mt-8 bg-slate-900/50 rounded-xl p-6 border border-slate-700/50">
+                        <h4 class="text-lg font-semibold text-white mb-4 flex items-center">
+                            <span class="text-2xl mr-2">🔍</span>
+                            Deployment Security Check
+                        </h4>
+                        <div class="space-y-4">
+                            <p class="text-slate-300 text-sm">
+                                Run Django's built-in deployment security check to identify potential security issues:
+                            </p>
+                            <div class="bg-slate-800 rounded-lg p-4 border border-slate-600/50">
+                                <code class="text-green-300 text-sm font-mono">python manage.py check --deploy</code>
+                            </div>
+                            <div class="text-xs text-slate-400">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <i data-lucide="info" class="h-3 w-3 text-blue-400"></i>
+                                    <span>This command checks for common deployment security issues</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="alert-triangle" class="h-3 w-3 text-yellow-400"></i>
+                                    <span>Run this before every production deployment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop"
+        class="fixed bottom-8 right-8 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 z-50"
+        title="Scroll to top">
+        <i data-lucide="arrow-up" class="h-6 w-6"></i>
+    </button>
+
+    <script>
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    {% endblock %}
